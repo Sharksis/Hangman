@@ -10,6 +10,7 @@ namespace test
         static void Main(string[] args)
         {
             bool play;
+            Console.WriteLine("Hello");
             Stopwatch stopwatch = new Stopwatch();
             Console.WriteLine("Welcome to the Hangman game\nCategory:Countries");
             do
