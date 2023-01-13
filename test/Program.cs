@@ -21,21 +21,29 @@ namespace test
                 play = gameState.StartExit();
                 if (play)
                 {
-                    gameState.RestartGamestate(countryCapital.SetRandomCountry());
+                    countryCapital = countryCapital.SetRandomCountry();
+                    gameState.RestartGamestate(countryCapital);
+
                     do
                     {
-                        stopwatch.Start();
                         if (GameState.GetLifePoints() <= 0)
                         {
                             Console.WriteLine("\nNo lifepoints left\nGame over");
                             break;
                         }
 
+                        stopwatch.Start();
                         Console.WriteLine(gameState.guessedChar);
                         Console.Write("\nYou have ");
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("{0} life points left", GameState.GetLifePoints());
                         Console.ResetColor();
+                        if (GameState.GetLifePoints() == 1)
+                        {
+                            Console.WriteLine("Little advice to help you: Capital City of this Country is {0}",
+                                countryCapital.GetCapital());
+                        }
+
                         GuessedLetters.TypeUsedLetters();
 
                         switch (GameState.ChooseLetterWord())
@@ -66,12 +74,11 @@ namespace test
                         if (!isWrongWord)
                         {
                             stopwatch.Stop();
-                            Console.WriteLine("\nIt took you {0} ",stopwatch.Elapsed);
+                            Console.WriteLine("\nIt took you {0} ", stopwatch.Elapsed);
                         }
                     } while (isWrongWord);
                 }
             } while (play);
-
 
             Console.ReadLine();
         }

@@ -63,7 +63,7 @@ namespace test
         public void RestartGamestate(CountryCapital countryCapital)
         {
             Console.WriteLine("New game has been started\nEach letter is displayed as _");
-            SetLifePoints(50);
+            SetLifePoints(5);
             GuessedLetters.ClearGuessedLetters();
 
             password = countryCapital.GetRandomCountry();
